@@ -3,9 +3,9 @@ from discord.ext import commands
 import jthon
 from pathlib import Path
 import os
-from cogs.util.errors import NotContributor
+
 config = jthon.load('config')
-TOKEN = config.get('token').data
+TOKEN = config.get('token')
 
 
 def get_prefix(bot, message):
