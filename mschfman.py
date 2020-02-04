@@ -5,7 +5,7 @@ from pathlib import Path
 import os
 from cogs.util.errors import NotContributor
 config = jthon.load('config')
-TOKEN = str(config.get('token'))
+TOKEN = str(config.get("token"))
 
 
 def get_prefix(bot, message):
