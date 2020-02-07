@@ -12,6 +12,7 @@ class General(commands.Cog):
 
     @commands.command()
     async def hitormiss(self, ctx):
+        """A basic ping type command, I think you can guess what this does."""
         await ctx.send("I guess I never miss, huh?")
 
 def setup(bot):
