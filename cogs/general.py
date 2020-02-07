@@ -12,8 +12,15 @@ class General(commands.Cog):
 
     @commands.command()
     async def hitormiss(self, ctx):
-        """A basic ping type command, I think you can guess what this does."""
+        """| A basic ping type command, I think you can guess what this does."""
         await ctx.send("I guess I never miss, huh?")
+
+    @commands.command()
+    async def interrogative(self, ctx, *, arg):
+        """| Allows you to send a question directly to where the bot is run, you may or may not get a response."""
+        print(f"Interrogative: {arg}")
+        await ctx.send(input("Response: "))
+
 
 def setup(bot):
     bot.add_cog(General(bot))

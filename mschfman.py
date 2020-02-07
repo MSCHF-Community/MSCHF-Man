@@ -61,10 +61,11 @@ async def setprefix(ctx, prefix: str=None):
 @bot.event # Hopefully handles DMs while bot is online
 async def on_message(message):
     if isinstance(message.channel, discord.DMChannel):
-        print(f'Prviate message from {message.author}: "{message.content}"')
-        l = open("DMLog.txt", "a")
-        l.write(f'\nPrviate message from {message.author}: "{message.content}"')
-        l.close()
+        if str(message.author) != "MSCHF Man#1788":
+            print(f'Prviate message from {message.author}: "{message.content}"')
+            l = open("DMLog.txt", "a")
+            l.write(f'\nPrviate message from {message.author}: "{message.content}"')
+            l.close()
     await bot.process_commands(message)
 
 
