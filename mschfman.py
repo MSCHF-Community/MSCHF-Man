@@ -10,7 +10,7 @@ TOKEN = str(config.get("token"))
 def get_prefix(bot, message):
     prefix = config.get('prefix')
     if not prefix:
-        prefix = '>'
+        prefix = '$'
     return commands.when_mentioned_or(*prefix)(bot, message)
 
 bot = commands.Bot(command_prefix=get_prefix) #allows you to change the bot's prefix
