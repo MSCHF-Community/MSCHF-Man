@@ -7,21 +7,17 @@ from cogs.util.errors import NotContributor
 config = jthon.load('config')
 TOKEN = str(config.get("token"))
 
-
 def get_prefix(bot, message):
     prefix = config.get('prefix')
     if not prefix:
         prefix = '>'
     return commands.when_mentioned_or(*prefix)(bot, message)
 
-
 bot = commands.Bot(command_prefix=get_prefix) #allows you to change the bot's prefix
-
 
 @bot.event
 async def on_ready():
     print(f"We have logged in as {bot.user.name}")
-
 
 @bot.event
 async def on_command_error(ctx, error):
@@ -40,12 +36,10 @@ async def on_command_error(ctx, error):
         e = discord.Embed(colour=discord.Colour(0xFF0000), description=f"{error}")
         await ctx.send(embed=e)
 
-
 @bot.check #no replying to bots
 async def __before_invoke(ctx):
     if not ctx.message.author.bot:
         return True
-
 
 @commands.is_owner()
 @bot.command(aliases=['sp'])
@@ -57,7 +51,6 @@ async def setprefix(ctx, prefix: str=None):
         config.save()
         await ctx.send(f'Prefix updated to: {prefix}')
 
-
 @bot.event # Hopefully handles DMs while bot is online
 async def on_message(message):
     if isinstance(message.channel, discord.DMChannel):
@@ -68,11 +61,9 @@ async def on_message(message):
             l.close()
     await bot.process_commands(message)
 
-
 @bot.event
 async def on_connect():
     print("Connecting...")
-
 
 def load_some_cogs():
     bot.startup_extensions = []
@@ -92,7 +83,6 @@ def load_some_cogs():
             except Exception as e:
                 exc = f'{type(e).__name__}: {e}'
                 print(f'Failed to load extension {extension}\n{exc}')
-
 
 load_some_cogs()
 bot.run(TOKEN, bot=True, reconnect=True)

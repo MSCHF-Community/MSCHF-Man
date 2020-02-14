@@ -4,9 +4,8 @@ import pytest
 import time
 import csv
 import requests
-import pandas
+import panda
 import json
-
 
 class General(commands.Cog):
     def __init__(self, bot):
@@ -35,7 +34,6 @@ class General(commands.Cog):
             await ctx.send("Your submitted password is correct.")
         else:
             await ctx.send("Your submitted password is incorrect.")
-
 
 def setup(bot):
     bot.add_cog(General(bot))
