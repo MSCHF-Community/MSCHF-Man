@@ -4,7 +4,7 @@ import pytest
 import time
 import csv
 import requests
-import panda
+import pandas
 import json
 
 class General(commands.Cog):
