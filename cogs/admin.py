@@ -5,7 +5,7 @@ class Admins(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.has_permissions(administrator=True)
+    @commands.is_owner()
     @commands.command(name='load', hidden=True)
     async def load_cog(self, ctx, *, cog: str):
         """Command which Loads a Module.
@@ -20,7 +20,7 @@ class Admins(commands.Cog):
             e = discord.Embed(description=f'**`SUCCESSFULLY`** loaded {cog}', colour=discord.Colour(0x278d89))
             await ctx.send(embed=e)
 
-    @commands.has_permissions(administrator=True)
+    @commands.is_owner()
     @commands.command(name='unload', hidden=True)
     async def unload_cog(self, ctx, *, cog: str):
         """Command which Unloads a Module.
@@ -35,9 +35,8 @@ class Admins(commands.Cog):
             e = discord.Embed(description=f'**`SUCCESSFULLY`** unloaded {cog}', colour=discord.Colour(0x278d89))
             await ctx.send(embed=e)
 
-    @commands.has_permissions(administrator=True)
-    @commands.command(name='reload', hidden=True)
     @commands.is_owner()
+    @commands.command(name='reload', hidden=True)
     async def reload_cog(self, ctx, *, cog: str):
         """Command which Reloads a Module.
         Remember to use dot path. e.g: cogs.admin"""
