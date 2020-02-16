@@ -12,6 +12,11 @@ class General(commands.Cog):
         self.bot = bot
 
     @commands.command()
+    async def help(self, ctx):
+        """| Overwriting default commands? Might break a bunch of shit."""
+        await ctx.send("See pinned message in this channel") 
+    
+    @commands.command()
     async def repeat(self, ctx, *, arg):
         await ctx.send(f"{arg}")
 
