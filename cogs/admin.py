@@ -21,7 +21,7 @@ class Admins(commands.Cog):
 
     @commands.is_owner()
     @commands.command(name='unload', hidden=True)
-    async def unload_cog(self, ctx, *, cog: str):
+    async def unload_cog(self, ctx, *, cog: str): #don't fucking unload the admin cog, you can't load it back without the load command, dumbass
         """Command which Unloads a Module.
         Remember to use dot path. e.g: cogs.admin"""
         try:
@@ -51,7 +51,7 @@ class Admins(commands.Cog):
 
     @commands.is_owner()
     @commands.command()
-    async def shutdown(self, ctx):
+    async def shutdown(self, ctx): #fairly self explanatory, allows the owner to shutdown the bot from discord
         await ctx.send("Command Received; Bot Shutdown Imminent.")
         print("Shutdown Command issued from within Discord...")
         exit()

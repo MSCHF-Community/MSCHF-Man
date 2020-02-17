@@ -5,21 +5,21 @@ from pathlib import Path
 import os
 from cogs.util.errors import NotContributor
 config = jthon.load('config')
-TOKEN = str(config.get("token"))
+TOKEN = str(config.get("token")) #pulls the bot token from the hidden config file
 
-def get_prefix(bot, message):
+def get_prefix(bot, message): #determines the prefix from the config file, if there isn't one, it defaults to "$"
     prefix = config.get('prefix')
     if not prefix:
         prefix = '$'
     return commands.when_mentioned_or(*prefix)(bot, message)
 
-bot = commands.Bot(command_prefix=get_prefix) #allows you to change the bot's prefix
+bot = commands.Bot(command_prefix=get_prefix)
 
 @bot.event
 async def on_ready():
     print(f"We have logged in as {bot.user.name}")
 
-@bot.event
+@bot.event #handles the two most common errors and a catch-all
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         embed = discord.Embed(title=f'Command: {ctx.command.name}', colour=discord.Colour(0xFF0000), description=f"{ctx.author.name}, you are on cooldown for this command for {error.retry_after:.2f}s")
@@ -40,7 +40,7 @@ async def __before_invoke(ctx):
     if not ctx.message.author.bot:
         return True
 
-@commands.is_owner()
+@commands.is_owner() #command to change the prefix, must be owner of the bot, writes to config file so to be persistent
 @bot.command(aliases=['sp'])
 async def setprefix(ctx, prefix: str=None):
     if not prefix or len(prefix) >= 3:
@@ -64,7 +64,7 @@ async def on_message(message):
 async def on_connect():
     print("Connecting...")
 
-def load_some_cogs():
+def load_some_cogs(): #loads all available extensions, can also be done manually when the admin cog is loaded
     bot.startup_extensions = []
     path = Path('./cogs')
     for dirpath, dirnames, filenames in os.walk(path):

@@ -12,11 +12,11 @@ class General(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def repeat(self, ctx, *, arg):
+    async def repeat(self, ctx, *, arg): #it repeats what you feed it, got it?
         await ctx.send(f"{arg}")
 
     @commands.command()
-    async def interrogative(self, ctx, *, arg):
+    async def interrogative(self, ctx, *, arg): #this is a more "fun" commmand, allowing people to talk directly to where the bot is run. Don't try to reload this cog with a pending interrogative, it fucks everything up
         """| Allows you to send a question directly to where the bot is run, you may or may not get a response."""
         print(f"Interrogative: {arg}")
         await ctx.send(input("Response: "))
