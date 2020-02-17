@@ -38,7 +38,7 @@ class Admins(commands.Cog):
     @commands.command(name='reload', hidden=True)
     async def reload_cog(self, ctx, *, cog: str):
         """Command which Reloads a Module.
-        Remember to use dot path. e.g: cogs.admin"""
+        Remember to use dot path. e.g: util.check"""
         try:
             self.bot.reload_extension(f'cogs.{cog}')
         except Exception as e:

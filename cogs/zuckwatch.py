@@ -8,6 +8,7 @@ import pandas
 import json
 
 def is_passchannel(ctx):
+    """Checks if the channel is the password checking channel."""
     return ctx.message.channel.id == 678708790878797825
 
 class Zuckwatch(commands.Cog):
