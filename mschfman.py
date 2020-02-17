@@ -22,8 +22,7 @@ async def on_ready():
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
-        embed = discord.Embed(title=f'Command: {ctx.command.name}', colour=discord.Colour(0xFF0000),
-                    description=f"{ctx.author.name}, you are on cooldown for this command for {error.retry_after:.2f}s")
+        embed = discord.Embed(title=f'Command: {ctx.command.name}', colour=discord.Colour(0xFF0000), description=f"{ctx.author.name}, you are on cooldown for this command for {error.retry_after:.2f}s")
         await ctx.send(embed=embed)
         return
 
