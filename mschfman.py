@@ -65,7 +65,7 @@ async def on_message(message):
 async def on_connect():
     print("Connecting...")
 
-@bot.command()
+@bot.command
 async def ping(self, ctx):
     await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
 

@@ -53,6 +53,7 @@ class Admins(commands.Cog):
     @commands.command()
     async def shutdown(self, ctx):
         await ctx.send("Command Received; Bot Shutdown Imminent.")
+        print("Shutdown Command issued from within Discord...")
         exit()
 
 def setup(bot):

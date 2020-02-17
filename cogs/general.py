@@ -16,10 +16,6 @@ class General(commands.Cog):
         await ctx.send(f"{arg}")
 
     @commands.command()
-    async def ping(self, ctx):
-        await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
-
-    @commands.command()
     async def interrogative(self, ctx, *, arg):
         """| Allows you to send a question directly to where the bot is run, you may or may not get a response."""
         print(f"Interrogative: {arg}")
