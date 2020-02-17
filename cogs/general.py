@@ -16,9 +16,8 @@ class General(commands.Cog):
         await ctx.send(f"{arg}")
 
     @commands.command()
-    async def hitormiss(self, ctx):
-        """| A basic ping type command, I think you can guess what this does."""
-        await ctx.send("I guess I never miss, huh?")
+    async def ping(ctx):
+        await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
 
     @commands.command()
     async def interrogative(self, ctx, *, arg):

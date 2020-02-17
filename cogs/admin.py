@@ -44,11 +44,16 @@ class Admins(commands.Cog):
         except Exception as e:
             e = discord.Embed(description=f'**`ERROR`** reloading {cog} {type(e).__name__} - {e}',
                               colour=discord.Colour(0xFF0000))
-            await ctx.send(embed=e)"
+            await ctx.send(embed=e)
         else:
             e = discord.Embed(description=f'**`SUCCESSFULLY`** reloaded {cog}', colour=discord.Colour(0x278d89))
             await ctx.send(embed=e)
 
+    @commands.is_owner()
+    @commands.command()
+    async def shutdown(self, ctx):
+        await ctx.send("Command Received; Bot Shutdown Imminent.")
+        exit()
 
 def setup(bot):
     bot.add_cog(Admins(bot))
