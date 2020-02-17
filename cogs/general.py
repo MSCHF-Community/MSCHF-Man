@@ -16,7 +16,7 @@ class General(commands.Cog):
         await ctx.send(f"{arg}")
 
     @commands.command()
-    async def ping(ctx):
+    async def ping(self, ctx):
         await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
 
     @commands.command()

@@ -65,6 +65,10 @@ async def on_message(message):
 async def on_connect():
     print("Connecting...")
 
+@bot.command()
+async def ping(self, ctx):
+    await ctx.send('Pong! {0}'.format(round(bot.latency, 1)))
+
 def load_some_cogs():
     bot.startup_extensions = []
     path = Path('./cogs')
