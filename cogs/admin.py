@@ -13,8 +13,7 @@ class Admins(commands.Cog):
         try:
             self.bot.load_extension(f'cogs.{cog}')
         except Exception as e:
-            e = discord.Embed(description=f'**`ERROR`** loading {cog} {type(e).__name__} - {e}',
-                              colour=discord.Colour(0xFF0000))
+            e = discord.Embed(description=f'**`ERROR`** loading {cog} {type(e).__name__} - {e}', colour=discord.Colour(0xFF0000))
             await ctx.send(embed=e)
         else:
             e = discord.Embed(description=f'**`SUCCESSFULLY`** loaded {cog}', colour=discord.Colour(0x278d89))

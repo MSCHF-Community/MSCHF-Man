@@ -10,7 +10,6 @@ import json
 def is_passchannel(ctx):
     return ctx.message.channel.id == 678708790878797825
 
-
 class Zuckwatch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
