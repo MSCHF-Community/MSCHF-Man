@@ -1,3 +1,4 @@
 *.json
 DMLog.txt
 mkultra.py
+*.pyc
