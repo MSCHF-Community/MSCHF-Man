@@ -17,8 +17,11 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 options = webdriver.ChromeOptions()
-options.add_argument('headless')
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
 
 def is_passchannel(ctx): #only exists to control usage
