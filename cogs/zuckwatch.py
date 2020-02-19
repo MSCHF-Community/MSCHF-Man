@@ -17,8 +17,6 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-#driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
