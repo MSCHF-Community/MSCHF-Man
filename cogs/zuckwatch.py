@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 def imports():
     from discord.ext import commands
     from cogs.util import check
@@ -24,33 +23,6 @@ def imports():
     driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
 
 imports()
-=======
-from discord.ext import commands
-from cogs.util import check
-import pytest
-import time
-import csv
-import requests
-import pandas
-import json
-import pytest
-import time
-import json
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
->>>>>>> 00fa6208c64bd02dbd7948833b7a6caa8ca8f003
 
 def is_passchannel(ctx): #only exists to control usage
     """Checks if the channel is the password checking channel."""
