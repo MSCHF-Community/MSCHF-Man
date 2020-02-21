@@ -48,7 +48,7 @@ class Zuckwatch(commands.Cog):
         self.bot = bot
     @commands.check(is_passchannel)
     @commands.command()
-    async def zuckpass(self, ctx, *, passwordtry): #runs a single api call of a passed string against the zuckwatch password "checker", 400 is a bad response, 200 is a good one. a blank string returns 200 for some reason, but the bot luckily won't let you pass an empty
+    async def zuckpass(self, ctx, *, passwordtry):
         """| Checks a single password against the Zuckwatch API"""
         async with ctx.typing():
             test_testloginzuck(passwordtry)
