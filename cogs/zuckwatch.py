@@ -1,3 +1,5 @@
+#-----imports-----
+
 from discord.ext import commands
 from cogs.util import check
 import pytest
@@ -17,13 +19,13 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-#driver = webdriver.Chrome(executable_path=ChromeDriverManager().install())
-
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
+
+#-----functions-----
 
 def is_passchannel(ctx): #only exists to control usage
     """Checks if the channel is the password checking channel."""
@@ -39,10 +41,12 @@ def test_testloginzuck(password):
     driver.find_element(By.CSS_SELECTOR, ".input").send_keys(password)
     driver.find_element(By.LINK_TEXT, "Login").click()
 
+#-----class & commands-----
+
 class Zuckwatch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+    @commands.check(is_passchannel)
     @commands.command()
     async def zuckpass(self, ctx, *, passwordtry): #runs a single api call of a passed string against the zuckwatch password "checker", 400 is a bad response, 200 is a good one. a blank string returns 200 for some reason, but the bot luckily won't let you pass an empty
         """| Checks a single password against the Zuckwatch API"""
@@ -56,6 +60,7 @@ class Zuckwatch(commands.Cog):
             finally:
                 await ctx.send("That password is incorrect.")
 
+#-----cog load function-----
 
 def setup(bot):
     bot.add_cog(Zuckwatch(bot))
