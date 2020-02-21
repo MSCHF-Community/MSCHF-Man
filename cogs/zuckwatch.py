@@ -55,8 +55,7 @@ class Zuckwatch(commands.Cog):
             try:
                 WebDriverWait(driver, 1500).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
             except:
-                await ctx.send("The password is: " + passwordtry)
-
+                await ctx.send("**The password is:** " + passwordtry)
             finally:
                 await ctx.send("That password is incorrect.")
 
