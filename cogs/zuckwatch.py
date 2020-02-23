@@ -57,7 +57,7 @@ class Zuckwatch(commands.Cog):
             except:
                 await ctx.send("**The password is:** " + passwordtry)
             finally:
-                await ctx.send("That password is incorrect.")
+                await ctx.send("`"+passwordtry+"`"+" is incorrect.")
 
 #-----cog load function-----
 

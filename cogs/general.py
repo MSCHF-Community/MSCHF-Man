@@ -6,6 +6,7 @@ import csv
 import requests
 import pandas
 import json
+import discord
 
 class General(commands.Cog):
     def __init__(self, bot):
@@ -20,6 +21,11 @@ class General(commands.Cog):
         """| Allows you to send a question directly to where the bot is run, you may or may not get a response."""
         print(f"Interrogative: {arg}")
         await ctx.send(input("Response: "))
+
+    @commands.command()
+    async def hornforderc(self, ctx):
+        """| Allows you to horn over Derc, the prettiest girl in zuckwatch."""
+        await ctx.send(file=discord.File("sexyderc.jpeg"))
 
 def setup(bot):
     bot.add_cog(General(bot))
