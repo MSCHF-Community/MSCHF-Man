@@ -12,6 +12,10 @@ brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
 
 catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg", "kenzcat1.jpg", "plantcat1.jpg", "plantcat2.png"]
 
+def is_catchannel(ctx): #only exists to control usage
+    """Checks if the channel is the password checking channel."""
+    return ctx.message.channel.id == 681361617845354506
+
 class afterdark(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -27,6 +31,7 @@ class afterdark(commands.Cog):
     async def hornforbren(self, ctx):
         await ctx.send(file=discord.File(random.choice(brenPics)))
 
+    @commands.check(is_catchannel)
     @commands.command(hidden=True)
     @commands.check(is_afterdark)
     async def simpforcat(self, ctx):
