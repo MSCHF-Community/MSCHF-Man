@@ -18,7 +18,7 @@ Makes the bot directly repeat what you pass.
 
 ### Zuckpass
 
-Usage: `$zuckpass {string}`
+Usage: `$zp {string}`
 
 Makes a direct call to the Zuckwatch password API, tries the string you pass it.
 
