@@ -48,7 +48,7 @@ class Zuckwatch(commands.Cog):
         self.bot = bot
     @commands.check(is_passchannel)
     @commands.command()
-    async def zuckpass(self, ctx, *, passwordtry):
+    async def zp(self, ctx, *, passwordtry):
         """| Checks a single password against the Zuckwatch API"""
         async with ctx.typing():
             test_testloginzuck(passwordtry)
