@@ -8,7 +8,7 @@ class afterdark(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(hidden=true)
+    @commands.command(hidden=True)
     async def hornforderc(self, ctx):
         """| Allows you to horn over Derc, the prettiest girl in zuckwatch."""
         await ctx.send(file=discord.File(random.choice(dercPics)))
