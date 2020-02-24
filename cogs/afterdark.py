@@ -4,7 +4,7 @@ import random
 import discord
 
 def is_afterdark(ctx):
-    return ctx.message.server.id == 681243283774504981
+    return ctx.message.guild.id == 681243283774504981
 
 dercPics = ["sexyderc.jpeg", "derc2.png"]
 
