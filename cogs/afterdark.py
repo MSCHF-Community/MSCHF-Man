@@ -36,7 +36,7 @@ class afterdark(commands.Cog):
         await ctx.send(file=discord.File(random.choice(brenPics)))
 
     @commands.command(hidden=True)
-    @commands.check(is_catchannel)
+    @commands.check(is_afterdark)
     async def simpforcat(self, ctx):
         await ctx.send(file=discord.File(random.choice(catPics)))
 
