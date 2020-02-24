@@ -3,6 +3,9 @@ from cogs.util import check
 import random
 import discord
 
+def is_afterdark(ctx):
+    return ctx.message.server.id == 681243283774504981
+
 dercPics = ["sexyderc.jpeg", "derc2.png"]
 
 class afterdark(commands.Cog):
@@ -10,6 +13,7 @@ class afterdark(commands.Cog):
         self.bot = bot
 
     @commands.command(hidden=True)
+    @commands.check(is_afterdark)
     async def hornforderc(self, ctx):
         """| Allows you to horn over Derc, the prettiest girl in zuckwatch."""
         await ctx.send(file=discord.File(random.choice(dercPics)))
