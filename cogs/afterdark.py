@@ -10,7 +10,7 @@ dercPics = ["sexyderc.jpeg", "derc2.png"]
 
 brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
 
-catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg"]
+catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg", "kenzcat1.jpg", "plantcat1.jpg", "plantcat2.png"]
 
 class afterdark(commands.Cog):
     def __init__(self, bot):
