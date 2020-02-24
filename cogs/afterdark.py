@@ -1,6 +1,7 @@
 from discord.ext import commands
 from cogs.util import check
 import random
+import discord
 
 dercPics = ["sexyderc.jpeg", "derc2.png"]
 
