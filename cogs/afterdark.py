@@ -8,6 +8,8 @@ def is_afterdark(ctx):
 
 dercPics = ["sexyderc.jpeg", "derc2.png"]
 
+brenPics = []
+
 class afterdark(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -17,6 +19,11 @@ class afterdark(commands.Cog):
     async def hornforderc(self, ctx):
         """| Allows you to horn over Derc, the prettiest girl in zuckwatch."""
         await ctx.send(file=discord.File(random.choice(dercPics)))
+
+    @commands.command(hidden=True)
+    @commands.check(is_afterdark)
+    async def hornforbren(self, ctx):
+        await ctx.send(file=discord.File(random.choice(brenPics)))
 
 
 
