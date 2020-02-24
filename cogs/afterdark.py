@@ -8,7 +8,9 @@ def is_afterdark(ctx):
 
 dercPics = ["sexyderc.jpeg", "derc2.png"]
 
-brenPics = []
+brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
+
+catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg"]
 
 class afterdark(commands.Cog):
     def __init__(self, bot):
@@ -25,7 +27,10 @@ class afterdark(commands.Cog):
     async def hornforbren(self, ctx):
         await ctx.send(file=discord.File(random.choice(brenPics)))
 
-
+    @commands.command(hidden=True)
+    @commands.check(is_afterdark)
+    async def simpforcat(self, ctx):
+        await ctx.send(file=discord.File(random.choice(catPics)))
 
 def setup(bot):
     bot.add_cog(afterdark(bot))
