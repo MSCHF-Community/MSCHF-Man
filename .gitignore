@@ -2,3 +2,7 @@
 DMLog.txt
 mkultra.py
 *.pyc
+
+*.jpg
+*.png
+*.jpeg
