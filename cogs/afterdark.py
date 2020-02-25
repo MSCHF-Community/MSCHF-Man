@@ -31,28 +31,28 @@ class afterdark(commands.Cog):
         self.bot = bot
 
     @commands.command(hidden=True)
-    @commands.check(is_modscategory)
+    @commands.check(is_eyeschannel)
     async def hornforderc(self, ctx):
         """| Allows you to horn for Derc."""
         await ctx.send(file=discord.File(random.choice(dercPics)))
 
     @commands.command(hidden=True)
-    @commands.check(is_modscategory)
+    @commands.check(is_eyeschannel)
     async def hornforbren(self, ctx):
         await ctx.send(file=discord.File(random.choice(brenPics)))
 
     @commands.command(hidden=True)
-    @commands.check(is_modscategory)
+    @commands.check(is_eyeschannel)
     async def unhornforkenz(self, ctx):
         await ctx.send(file=discord.File(random.choice(kenzPics)))
 
     @commands.command(hidden=True)
-    @commands.check(is_modscategory)
+    @commands.check(is_eyeschannel)
     async def hornforj(self, ctx):
         await ctx.send(file=discord.File(random.choice(jarrettPics)))
 
     @commands.command(hidden=True)
-    @commands.check(is_modscategory)
+    @commands.check(is_eyeschannel)
     async def hornforplant(self, ctx):
         await ctx.send(file=discord.File(random.choice(plantPics)))
 
