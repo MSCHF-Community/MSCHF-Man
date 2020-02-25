@@ -55,7 +55,7 @@ class afterdark(commands.Cog):
 
     @commands.command(hidden=True)
     @commands.check(is_afterdark)
-    @commands.command(aliases=['simpforcats','cat','cats'])
+    @commands.command(aliases=['simpforcats'])
     async def simpforcat(self, ctx):
         await ctx.send(file=discord.File(random.choice(catPics)))
 
