@@ -6,17 +6,13 @@ import discord
 def is_afterdark(ctx):
     return ctx.message.guild.id == 681243283774504981
 
-def is_catchannel(ctx): #only exists to control usage
-    """Checks if the channel is cat channel in afterdark."""
-    return ctx.message.channel.id == 681361617845354506
-
 def is_eyeschannel(ctx): #only exists to control usage
     """Checks if the channel is eyes channel in afterdark."""
     return ctx.message.channel.id == 681248921250693151
 
-#def is_adgeneral(ctx):
-#    """Checks if the channel is mod general channel in afterdark."""
-#    return ctx.message.channel.id == 681243283774504984
+def is_modscategory(ctx): #For testing purposes
+    """Checks if the category is mods-only in afterdark."""
+    return ctx.CategoryChannel.id == 681381577099313187
 
 dercPics = ["derc1.jpeg", "derc2.png", "derc3.jpg", "derc4.jpg", "derc5.jpg"]
 
