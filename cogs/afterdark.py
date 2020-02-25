@@ -18,7 +18,7 @@ def is_eyeschannel(ctx): #only exists to control usage
 #    """Checks if the channel is mod general channel in afterdark."""
 #    return ctx.message.channel.id == 681243283774504984
 
-dercPics = ["sexyderc.jpeg", "derc2.png", "derc3.jpg"]
+dercPics = ["sexyderc.jpeg", "derc2.png", "derc3.jpg", "derc4.jpg"]
 
 brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
 
@@ -50,7 +50,7 @@ class afterdark(commands.Cog):
 
     @commands.command(hidden=True)
     @commands.check(is_eyeschannel)
-    async def unhornforj(self, ctx):
+    async def hornforj(self, ctx):
         await ctx.send(file=discord.File(random.choice(jarrettPics)))
 
     @commands.command(hidden=True)
