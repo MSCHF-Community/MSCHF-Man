@@ -18,13 +18,15 @@ def is_eyeschannel(ctx): #only exists to control usage
 #    """Checks if the channel is mod general channel in afterdark."""
 #    return ctx.message.channel.id == 681243283774504984
 
-dercPics = ["sexyderc.jpeg", "derc2.png", "derc3.jpg", "derc4.jpg"]
+dercPics = ["derc1.jpeg", "derc2.png", "derc3.jpg", "derc4.jpg", "derc5.jpg"]
 
 brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
 
+plantPics = ["plant1.jpg", "plant2.jpg"]
+
 kenzPics = ["kenz1.jpg", "elbow1.jpg", "elbow2.jpg", "elbow3.jpg", "elbow4.jpg", "elbow5.jpg"]
 
-jarrettPics = ["jarrett1.jpeg", "jarrett3.jpg", "jarrett4.jpg", "jarrett5.jpg", "jarrett6.jpg"]
+jarrettPics = ["jarrett1.jpeg", "jarrett3.jpg", "jarrett4.jpg", "jarrett5.jpg", "jarrett6.jpg", "jarrett7.jpg", "jarrett8.jpg", "jarrett9.jpg", "jarrett10.jpeg"]
 
 catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg", "kenzcat1.jpg", "plantcat1.jpg", "plantcat2.png", "plantcat3.jpg", "plantcat4.jpg", "plantcat5.jpg", "plantcat6.jpg", "plantcat7.jpg", "gothcat.png"]
 
@@ -52,6 +54,11 @@ class afterdark(commands.Cog):
     @commands.check(is_eyeschannel)
     async def hornforj(self, ctx):
         await ctx.send(file=discord.File(random.choice(jarrettPics)))
+
+    @commands.command(hidden=True)
+    @commands.check(is_eyeschannel)
+    async def hornforplant(self, ctx):
+        await ctx.send(file=discord.File(random.choice(plantPics)))
 
     @commands.command(hidden=True)
     @commands.check(is_afterdark)
