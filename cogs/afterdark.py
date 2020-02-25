@@ -24,7 +24,7 @@ brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
 
 kenzPics = ["kenz1.jpg", "elbow1.jpg", "elbow2.jpg", "elbow3.jpg", "elbow4.jpg", "elbow5.jpg"]
 
-jarrettPics = ["jarrett1.jpeg", "jarrett2.png", "jarrett3.jpg", "jarrett4.jpg", "jarrett5.jpg", "jarrett6.jpg"]
+jarrettPics = ["jarrett1.jpeg", "jarrett3.jpg", "jarrett4.jpg", "jarrett5.jpg", "jarrett6.jpg"]
 
 catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg", "kenzcat1.jpg", "plantcat1.jpg", "plantcat2.png", "plantcat3.jpg", "plantcat4.jpg", "plantcat5.jpg", "plantcat6.jpg", "gothcat.png"]
 
