@@ -14,9 +14,9 @@ def is_eyeschannel(ctx): #only exists to control usage
     """Checks if the channel is eyes channel in afterdark."""
     return ctx.message.channel.id == 681248921250693151
 
-def is_adgeneral(ctx):
-    """Checks if the channel is mod general channel in afterdark."""
-    return ctx.message.channel.id == 681243283774504984
+#def is_adgeneral(ctx):
+#    """Checks if the channel is mod general channel in afterdark."""
+#    return ctx.message.channel.id == 681243283774504984
 
 dercPics = ["sexyderc.jpeg", "derc2.png", "derc3.jpg"]
 
@@ -34,26 +34,22 @@ class afterdark(commands.Cog):
 
     @commands.command(hidden=True)
     @commands.check(is_eyeschannel)
-    @commands.check(is_adgeneral)
     async def hornforderc(self, ctx):
         """| Allows you to horn for Derc."""
         await ctx.send(file=discord.File(random.choice(dercPics)))
 
     @commands.command(hidden=True)
     @commands.check(is_eyeschannel)
-    @commands.check(is_adgeneral)
     async def hornforbren(self, ctx):
         await ctx.send(file=discord.File(random.choice(brenPics)))
 
     @commands.command(hidden=True)
     @commands.check(is_eyeschannel)
-    @commands.check(is_adgeneral)
     async def unhornforkenz(self, ctx):
         await ctx.send(file=discord.File(random.choice(kenzPics)))
 
     @commands.command(hidden=True)
     @commands.check(is_eyeschannel)
-    @commands.check(is_adgeneral)
     async def unhornforj(self, ctx):
         await ctx.send(file=discord.File(random.choice(jarrettPics)))
 
