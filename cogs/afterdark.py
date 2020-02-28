@@ -24,7 +24,7 @@ kenzPics = ["kenz1.jpg", "elbow1.jpg", "elbow2.jpg", "elbow3.jpg", "elbow4.jpg",
 
 jarrettPics = ["jarrett1.jpeg", "jarrett3.jpg", "jarrett4.jpg", "jarrett5.jpg", "jarrett6.jpg", "jarrett7.jpg", "jarrett8.jpg", "jarrett9.jpg", "jarrett10.jpeg"]
 
-catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg", "kenzcat1.jpg", "plantcat1.jpg", "plantcat2.png", "plantcat3.jpg", "plantcat4.jpg", "plantcat5.jpg", "plantcat6.jpg", "plantcat7.jpg", "gothcat.png"]
+catPics = ["brencat1.jpg", "brencat2.jpg", "brencat3.jpg", "brencat4.jpg", "brencat5.jpg", "jarrettcat1.jpg", "kenzcat1.jpg", "kenzcat2.jpg", "kenzcat3.png", "kenzcat4.jpg", "plantcat1.jpg", "plantcat2.png", "plantcat3.jpg", "plantcat4.jpg", "plantcat5.jpg", "plantcat6.jpg", "plantcat7.jpg", "gothcat.png"]
 
 class afterdark(commands.Cog):
     def __init__(self, bot):
