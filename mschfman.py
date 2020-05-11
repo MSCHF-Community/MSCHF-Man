@@ -10,7 +10,7 @@ TOKEN = str(config.get("token")) #pulls the bot token from the hidden config fil
 def get_prefix(bot, message): #determines the prefix from the config file, if there isn't one, it defaults to "$"
     prefix = config.get('prefix')
     if not prefix:
-        prefix = '$'
+        prefix = '*'
     return commands.when_mentioned_or(*prefix)(bot, message)
 
 bot = commands.Bot(command_prefix=get_prefix)
