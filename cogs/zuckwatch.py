@@ -11,6 +11,7 @@ import json
 import pytest
 import time
 import json
+import time as t
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -35,6 +36,7 @@ def teardown_method():
     driver.quit()
 
 def test_testloginzuck(password):
+    t.sleep(4)
     driver.get("https://zuckwatch.com/")
     driver.set_window_size(1366, 734)
     driver.find_element(By.CSS_SELECTOR, ".input").click()
@@ -53,7 +55,7 @@ class Zuckwatch(commands.Cog):
         async with ctx.typing():
             test_testloginzuck(passwordtry)
             try:
-                WebDriverWait(driver, 1500).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
+                WebDriverWait(driver, 4000).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
             except:
                 await ctx.send("**The password is:** " + passwordtry)
             finally:
