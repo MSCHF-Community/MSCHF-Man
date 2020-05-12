@@ -10,7 +10,7 @@ import pandas
 import json
 import pytest
 import time
-import json
+import jthon
 import sys
 import datetime
 import selenium
@@ -31,6 +31,7 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
+config = jthon.load('config')
 
 #Config
 parser = OptionParser()
@@ -40,7 +41,10 @@ now = datetime.datetime.now()
 
 def is_passchannel(ctx): #only exists to control usage
     """Checks if the channel is the password checking channel."""
-    return ctx.message.channel.id == 678708790878797825
+    channelid = config.get('channelid')
+    if not channelid:
+        channelid = '678708790878797825'
+    return ctx.message.channel.id == channelid
 
 def teardown_method():
     driver.quit()
