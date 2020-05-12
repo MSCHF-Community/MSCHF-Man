@@ -74,4 +74,4 @@ class Zuckwatch(commands.Cog):
 #-----cog load function-----
 
 def setup(bot):
-    bot.add_cog(Zuckwat
+    bot.add_cog(Zuckwatch(bot))
