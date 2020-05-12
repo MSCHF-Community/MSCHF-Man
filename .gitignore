@@ -6,3 +6,5 @@ mkultra.py
 *.jpg
 *.png
 *.jpeg
+
+.idea/
