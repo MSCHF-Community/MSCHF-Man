@@ -46,10 +46,10 @@ def teardown_method():
     driver.quit()
 
 def test_testloginzuck(password):
-    browser.get('https://zuckwatch.com')
+    driver.get("https://zuckwatch.com/")
     t.sleep(2)
-    Sel_password = browser.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > input')
-    Sel_Login = browser.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > a')
+    Sel_password = driver.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > input')
+    Sel_Login = driver.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > a')
     Sel_password.send_keys('test')
     Sel_Login.click()
 
