@@ -50,7 +50,7 @@ def test_testloginzuck(password):
     t.sleep(2)
     Sel_password = driver.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > input')
     Sel_Login = driver.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > a')
-    Sel_password.send_keys('test')
+    Sel_password.send_keys(password)
     Sel_Login.click()
 
 #-----class & commands-----
