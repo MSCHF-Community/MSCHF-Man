@@ -11,7 +11,13 @@ import json
 import pytest
 import time
 import json
+import sys
+import datetime
+import selenium
 import time as t
+from sys import stdout
+from optparse import OptionParser
+from selenium.common.exceptions import NoSuchElementException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -26,6 +32,10 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
 
+#Config
+parser = OptionParser()
+now = datetime.datetime.now()
+
 #-----functions-----
 
 def is_passchannel(ctx): #only exists to control usage
@@ -36,12 +46,12 @@ def teardown_method():
     driver.quit()
 
 def test_testloginzuck(password):
-    t.sleep(4)
-    driver.get("https://zuckwatch.com/")
-    driver.set_window_size(1366, 734)
-    driver.find_element(By.CSS_SELECTOR, ".input").click()
-    driver.find_element(By.CSS_SELECTOR, ".input").send_keys(password)
-    driver.find_element(By.LINK_TEXT, "Login").click()
+    browser.get('https://zuckwatch.com')
+    t.sleep(2)
+    Sel_password = browser.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > input')
+    Sel_Login = browser.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > a')
+    Sel_password.send_keys('test')
+    Sel_Login.click()
 
 #-----class & commands-----
 
@@ -55,7 +65,7 @@ class Zuckwatch(commands.Cog):
         async with ctx.typing():
             test_testloginzuck(passwordtry)
             try:
-                WebDriverWait(driver, 4000).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
+                WebDriverWait(driver, 1500).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
             except:
                 await ctx.send("**The password is:** " + passwordtry)
             finally:
@@ -64,4 +74,4 @@ class Zuckwatch(commands.Cog):
 #-----cog load function-----
 
 def setup(bot):
-    bot.add_cog(Zuckwatch(bot))
+    bot.add_cog(Zuckwat
