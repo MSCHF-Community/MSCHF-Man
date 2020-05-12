@@ -11,6 +11,13 @@ import json
 import pytest
 import time
 import json
+import sys
+import datetime
+import selenium
+import time as t
+from sys import stdout
+from optparse import OptionParser
+from selenium.common.exceptions import NoSuchElementException
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -25,6 +32,10 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 driver = webdriver.Chrome(chrome_options=options, executable_path=ChromeDriverManager().install())
 
+#Config
+parser = OptionParser()
+now = datetime.datetime.now()
+
 #-----functions-----
 
 def is_passchannel(ctx): #only exists to control usage
@@ -36,10 +47,11 @@ def teardown_method():
 
 def test_testloginzuck(password):
     driver.get("https://zuckwatch.com/")
-    driver.set_window_size(1366, 734)
-    driver.find_element(By.CSS_SELECTOR, ".input").click()
-    driver.find_element(By.CSS_SELECTOR, ".input").send_keys(password)
-    driver.find_element(By.LINK_TEXT, "Login").click()
+    t.sleep(4)
+    Sel_password = driver.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > input')
+    Sel_Login = driver.find_element_by_css_selector('#__layout > div > div > div > div > div.columns > div:nth-child(1) > div > a')
+    Sel_password.send_keys(password)
+    Sel_Login.click()
 
 #-----class & commands-----
 
