@@ -41,10 +41,11 @@ now = datetime.datetime.now()
 
 def is_passchannel(ctx): #only exists to control usage
     """Checks if the channel is the password checking channel."""
-    channelid = config.get('channelid')
-    if not channelid:
-        channelid = '678708790878797825'
-    return ctx.message.channel.id == channelid
+    #channelid = config.get('channelid')
+    #if not channelid:
+    #    channelid = '678708790878797825'
+    #return ctx.message.channel.id == channelid
+    return ctx.message.channel.id == 678708790878797825
 
 def teardown_method():
     driver.quit()
