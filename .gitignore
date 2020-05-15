@@ -8,3 +8,4 @@ mkultra.py
 *.jpeg
 
 .idea/
+.vscode/
