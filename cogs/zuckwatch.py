@@ -17,7 +17,7 @@ DRIVER = webdriver.Chrome(chrome_options=OPTIONS, executable_path=ChromeDriverMa
 CONFIG = jthon.load('config')
 
 #Config
-PARSER = OptionParser()
+PARSER = OptionParser() #TODO: I'm not sure what options this parses. It claims it's not a unused variable but I'm skeptical.
 #-----functions-----
 
 def is_passchannel(ctx): #only exists to control usage
