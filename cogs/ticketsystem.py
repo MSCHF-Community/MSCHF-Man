@@ -41,3 +41,6 @@ class Tickets(commands.Cog):
             await channel.delete()
         else:
             await ctx.send("This channel is not a Ticket, cannot delete.")
+
+def setup(bot):
+    bot.add_cog(Tickets(bot))
