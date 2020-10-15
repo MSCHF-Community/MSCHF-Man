@@ -7,6 +7,8 @@ import discord
 from discord.utils import get
 import discord.abc
 
+ticketnumber = 1
+
 class Tickets(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -15,6 +17,7 @@ class Tickets(commands.Cog):
     @has_permissions(manage_channels=True)
     async def openTicket(self,ctx):
         """Command that allows a mod to open a room."""
+        global ticketnumber
         guild = ctx.message.guild
         moderator_role = get(guild.roles, name="Moderators")
         category = get(guild.categories, name="Tickets")
@@ -25,8 +28,10 @@ class Tickets(commands.Cog):
         if category is None:
                 category = await guild.create_category_channel("Tickets")
 
-        channel = await guild.create_text_channel(str(authorID), category=category, overwrites=overwrites)
+        channel = await guild.create_text_channel("Ticket "+ticketnumber, category=category, overwrites=overwrites)
         
+        ticketnumber += 1
+
         await channel.send("Welcome to your Ticket, "+ ctx.message.author.mention)
 
     @commands.command(name="closeticket", aliases=['close'])
@@ -41,6 +46,20 @@ class Tickets(commands.Cog):
             await channel.delete()
         else:
             await ctx.send("This channel is not a Ticket, cannot delete.")
+
+    @commands.command(name="adduser")
+    async def add_user(self, ctx, *, user):
+        message = ctx.message
+        usertoadd = message.mentions[0].id
+        overwrites = {usertoadd: discord.PermissionOverwrite(read_messages=True)}
+        await self.bot.edit_channel_permissions(ctx.message.channel, overwrites)
+
+    @commands.command(name="removeuser")
+    async def remove_user(self, ctx, *, user):
+        message = ctx.message
+        usertoadd = message.mentions[0].id
+        overwrites = {usertoadd: discord.PermissionOverwrite(read_messages=True)}
+        await self.bot.edit_channel_permissions(ctx.message.channel, overwrites)
 
 def setup(bot):
     bot.add_cog(Tickets(bot))
