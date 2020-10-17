@@ -52,14 +52,14 @@ class Tickets(commands.Cog):
         message = ctx.message
         usertoadd = message.mentions[0].id
         overwrites = {usertoadd: discord.PermissionOverwrite(read_messages=True)}
-        await self.bot.edit_channel_permissions(ctx.message.channel, overwrites)
+        await ctx.channel.set_permissions(ctx.message.channel, overwrites)
 
     @commands.command(name="removeuser")
     async def remove_user(self, ctx, *, user):
         message = ctx.message
         usertoadd = message.mentions[0].id
         overwrites = {usertoadd: discord.PermissionOverwrite(read_messages=True)}
-        await self.bot.edit_channel_permissions(ctx.message.channel, overwrites)
+        await ctx.channel.set_permissions(ctx.message.channel, overwrites)
 
 def setup(bot):
     bot.add_cog(Tickets(bot))
