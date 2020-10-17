@@ -28,7 +28,7 @@ class Tickets(commands.Cog):
         if category is None:
                 category = await guild.create_category_channel("Tickets")
 
-        channel = await guild.create_text_channel("Ticket "+ticketnumber, category=category, overwrites=overwrites)
+        channel = await guild.create_text_channel("Ticket "+str(ticketnumber), category=category, overwrites=overwrites)
         
         ticketnumber += 1
 
