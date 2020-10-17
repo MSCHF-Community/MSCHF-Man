@@ -49,11 +49,11 @@ class Tickets(commands.Cog):
 
     @commands.command(name="adduser")
     async def add_user(self, ctx, *, user: discord.User):
-        await ctx.channel.set_permissions(user, discord.PermissionOverwrite(read_messages=True))
+        await ctx.channel.set_permissions(user, read_messages=True)
 
     @commands.command(name="removeuser")
     async def remove_user(self, ctx, *, user: discord.User):
-        await ctx.channel.set_permissions(user, discord.PermissionOverwrite(read_messages=False))
+        await ctx.channel.set_permissions(user, read_messages=False)
 
 def setup(bot):
     bot.add_cog(Tickets(bot))
