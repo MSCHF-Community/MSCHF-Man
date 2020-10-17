@@ -49,11 +49,24 @@ class Tickets(commands.Cog):
 
     @commands.command(name="adduser")
     async def add_user(self, ctx, *, user: discord.User):
-        await ctx.channel.set_permissions(user, read_messages=True)
+        guild = ctx.message.guild
+        prcatid = get(guild.categories, name="Tickets").id
+        category = ctx.message.channel.category_id
+        if category == prcatid:
+            await ctx.channel.set_permissions(user, read_messages=True)
+        else:
+            await ctx.send("This channel is not a Ticket, cannot add or remove users.")
+        
 
     @commands.command(name="removeuser")
     async def remove_user(self, ctx, *, user: discord.User):
-        await ctx.channel.set_permissions(user, read_messages=False)
+        guild = ctx.message.guild
+        prcatid = get(guild.categories, name="Tickets").id
+        category = ctx.message.channel.category_id
+        if category == prcatid:
+            await ctx.channel.set_permissions(user, read_messages=False)
+        else:
+            await ctx.send("This channel is not a Ticket, cannot add or remove users.")
 
 def setup(bot):
     bot.add_cog(Tickets(bot))
