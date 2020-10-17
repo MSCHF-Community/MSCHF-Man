@@ -48,11 +48,11 @@ class Tickets(commands.Cog):
             await ctx.send("This channel is not a Ticket, cannot delete.")
 
     @commands.command(name="adduser")
-    async def add_user(self, ctx, *, user:discord.User)
+    async def add_user(self, ctx, *, user: discord.User):
         await ctx.channel.set_permissions(user, discord.PermissionOverwrite(read_messages=True))
 
     @commands.command(name="removeuser")
-    async def remove_user(self, ctx, *, user:discord.User):
+    async def remove_user(self, ctx, *, user: discord.User):
         await ctx.channel.set_permissions(user, discord.PermissionOverwrite(read_messages=False))
 
 def setup(bot):
