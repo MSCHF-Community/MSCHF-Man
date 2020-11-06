@@ -6,10 +6,6 @@ class General(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def repeat(self, ctx, *, arg): #it repeats what you feed it, got it?
-        await ctx.send(f"{arg}")
-
-    @commands.command()
     async def credits(self, ctx):
         config = jthon.load('./config')
         contributors = list(config.get('contributors').data)
