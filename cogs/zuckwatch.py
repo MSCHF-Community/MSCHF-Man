@@ -50,9 +50,9 @@ class Zuckwatch(commands.Cog):
             try:
                 WebDriverWait(DRIVER, 1500).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
             except:
-                await ctx.send(discord.utils.escape_mentions("**The password is:** " + passwordtry))
+                await ctx.send(discord.utils.escape_mentions(f"**The password is:** {passwordtry}"))
             finally:
-                await ctx.send(discord.utils.escape_mentions("`"+passwordtry+"`"+" is incorrect."))
+                await ctx.send(discord.utils.escape_mentions(f"`{passwordtry.replace('`', '')}` is incorrect."))
 
 #-----cog load function-----
 
