@@ -6,15 +6,18 @@ import discord
 def is_afterdark(ctx):
     return ctx.message.guild.id == 681243283774504981
 
+def is_mschfserver(ctx):
+    return ctx.message.guild.id == 671536906290331676
+
 def is_eyeschannel(ctx): #only exists to control usage
     """Checks if the channel is eyes channel in afterdark."""
     return ctx.message.channel.id == 681248921250693151
 
-def is_modscategory(ctx): #For testing purposes
-    """Checks if the category is mods-only in afterdark."""
-    return ctx.CategoryChannel.id == 681381577099313187
+# def is_modscategory(ctx): #For testing purposes - doesn't work
+    #"""Checks if the category is mods-only in afterdark."""
+    #return ctx.CategoryChannel.id == 681381577099313187
 
-dercPics = ["derc1.jpeg", "derc2.png", "derc3.jpg", "derc4.jpg", "derc5.jpg"]
+dercPics = ["derc1.jpeg", "derc2.png", "derc3.jpg", "derc4.jpg", "derc5.jpg", "derc6.jpg", "derc7.png"]
 
 brenPics = ["bren1.jpg", "bren2.jpg", "bren3.jpg"]
 
@@ -43,7 +46,7 @@ class afterdark(commands.Cog):
 
     @commands.command(hidden=True)
     @commands.check(is_eyeschannel)
-    async def unhornforkenz(self, ctx):
+    async def elbowpicpls(self, ctx):
         await ctx.send(file=discord.File(random.choice(kenzPics)))
 
     @commands.command(hidden=True)
