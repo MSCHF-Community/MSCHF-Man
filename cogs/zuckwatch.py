@@ -3,6 +3,7 @@ import time as t
 from optparse import OptionParser #TODO: Update to a non-deprecated module
 import jthon
 from discord.ext import commands
+import discord.utils
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
@@ -49,9 +50,9 @@ class Zuckwatch(commands.Cog):
             try:
                 WebDriverWait(DRIVER, 1500).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".nuxt-progress-failed")))
             except:
-                await ctx.send("**The password is:** " + passwordtry)
+                await ctx.send(discord.utils.escape_mentions(f"**The password is:** {passwordtry}"))
             finally:
-                await ctx.send("`"+passwordtry+"`"+" is incorrect.")
+                await ctx.send(discord.utils.escape_mentions(f"`{passwordtry.replace('`', '')}` is incorrect."))
 
 #-----cog load function-----
 
