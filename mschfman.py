@@ -1,87 +1,67 @@
+# Import Stack
 import discord
 from discord.ext import commands
 import jthon
-from pathlib import Path
 import os
-from cogs.util.errors import NotContributor
+import discord.abc
+class MyHelpCommand(commands.MinimalHelpCommand):
+    async def send_pages(self):
+        destination = self.get_destination()
+        e = discord.Embed(color=discord.Color(0x57F287), description='')
+        for page in self.paginator.pages:
+            e.description += page
+        await destination.send(embed=e)
+
+# Variable Defs
+help_command = commands.DefaultHelpCommand(no_category = 'Other Commands')
 config = jthon.load('config')
-TOKEN = str(config.get("token")) #pulls the bot token from the hidden config file
+token = str(config.get("token")) #pulls the bot token from the hidden config file
+bot = commands.Bot(
+    command_prefix = commands.when_mentioned_or('!!!'),
+    description = "The Official bot of the Unofficial MSCHF Discord Server",
+    help_command = MyHelpCommand()
+)
 
-def get_prefix(bot, message): #determines the prefix from the config file, if there isn't one, it defaults to "$"
-    prefix = config.get('prefix')
-    if not prefix:
-        prefix = '$'
-    return commands.when_mentioned_or(*prefix)(bot, message)
+# Function Defs
+def automatic_cog_load():
+    for filename in os.listdir('./cogs'):
+        if filename.endswith('.py'):
+            bot.load_extension(f'cogs.{filename[:-3]}')
 
-bot = commands.Bot(command_prefix=get_prefix)
-
+#Bot Events
 @bot.event
 async def on_ready():
-    print(f"We have logged in as {bot.user.name}")
+    print("MSCHF Man is operational!")
 
-@bot.event #handles the two most common errors and a catch-all
+@bot.event 
 async def on_command_error(ctx, error):
-    if isinstance(error, commands.CommandOnCooldown):
-        embed = discord.Embed(title=f'Command: {ctx.command.name}', colour=discord.Colour(0xFF0000), description=f"{ctx.author.name}, you are on cooldown for this command for {error.retry_after:.2f}s")
-        await ctx.send(embed=embed)
-        return
+    e = discord.Embed(colour=discord.Colour(0xED4245), description=f"{error}")
+    await ctx.send(embed=e)
 
-    if isinstance(error, NotContributor):
-        e = discord.Embed(colour=discord.Colour(0xFF0000), description=f"{ctx.author.name}, you aren't a contributor.")
-        await ctx.send(embed=e)
-        return
-
-    else:
-        e = discord.Embed(colour=discord.Colour(0xFF0000), description=f"{error}")
-        await ctx.send(embed=e)
+@bot.event # Hopefully handles DMs while bot is online
+async def on_message(message):
+    if isinstance(message.channel, discord.DMChannel):
+        if str(message.author) != "MSCHF Man#1788":
+            print(f'Private message from {message.author} at {message.created_at}: "{message.content}"') #these datetime objects are in GMT
+            l = open("DMLog.txt", "a")
+            l.write(f'\nPrivate message from {message.author} at {message.created_at}: "{message.content}"') #these datetime objects are in GMT
+            l.close()
+    await bot.process_commands(message)
 
 @bot.check #no replying to bots
 async def __before_invoke(ctx):
     if not ctx.message.author.bot:
         return True
 
-@commands.is_owner() #command to change the prefix, must be owner of the bot, writes to config file so to be persistent
-@bot.command(aliases=['sp'])
-async def setprefix(ctx, prefix: str=None):
-    if not prefix or len(prefix) >= 3:
-        await ctx.send("Please provide the prefix you would like to use between 1-2 chars.")
-    else:
-        config['prefix'] = prefix
-        config.save()
-        await ctx.send(f'Prefix updated to: {prefix}')
+#Bot Commands
+@commands.is_owner()
+@bot.command()
+async def shutdown(ctx):
+    """Allows the owner of the bot to shut down the bot from within Discord."""
+    e = discord.Embed(colour=discord.Colour(0x57F287), description="Command Received, Shutting down MSCHF Man!")
+    await ctx.send(embed=e)
+    exit()
 
-@bot.event # Hopefully handles DMs while bot is online
-async def on_message(message):
-    if isinstance(message.channel, discord.DMChannel):
-        if str(message.author) != "MSCHF Man#1788":
-            print(f'Private message from {message.author}: "{message.content}"')
-            l = open("DMLog.txt", "a")
-            l.write(f'\nPrivate message from {message.author}: "{message.content}"')
-            l.close()
-    await bot.process_commands(message)
+automatic_cog_load()
 
-@bot.event
-async def on_connect():
-    print("Connecting...")
-
-def load_some_cogs(): #loads all available extensions, can also be done manually when the admin cog is loaded
-    bot.startup_extensions = []
-    path = Path('./cogs')
-    for dirpath, dirnames, filenames in os.walk(path):
-        if dirpath.strip('./') == str(path):
-            for cog in filenames:
-                if cog.endswith('.py') and not cog.startswith('_'):
-                    extension = 'cogs.'+cog[:-3]
-                    bot.startup_extensions.append(extension)
-
-    if __name__ == "__main__":
-        for extension in bot.startup_extensions:
-            try:
-                bot.load_extension(extension)
-                print(f'Loaded {extension}')
-            except Exception as e:
-                exc = f'{type(e).__name__}: {e}'
-                print(f'Failed to load extension {extension}\n{exc}')
-
-load_some_cogs()
-bot.run(TOKEN, bot=True, reconnect=True)
+bot.run(token)

@@ -1,11 +1,7 @@
-*.json
+config.json
 DMLog.txt
-mkultra.py
 *.pyc
-
-*.jpg
-*.png
-*.jpeg
-
 .idea/
 .vscode/
+/__pychache__
+/cogs/__pychache__

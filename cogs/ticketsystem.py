@@ -16,13 +16,12 @@ class Tickets(commands.Cog):
     @commands.command(name="openticket")
     @has_permissions(manage_channels=True)
     async def openTicket(self,ctx):
-        """Command that allows a mod to open a room."""
+        """Command that allows a mod to open a ticket."""
         global ticketnumber
         guild = ctx.message.guild
         moderator_role = get(guild.roles, name="Moderators")
         category = get(guild.categories, name="Tickets")
         author = ctx.author
-        authorID = author.id
         overwrites = {guild.default_role: discord.PermissionOverwrite(read_messages=False), author: discord.PermissionOverwrite(read_messages=True), moderator_role: discord.PermissionOverwrite(read_messages=True)}
 
         if category is None:
