@@ -4,6 +4,7 @@ from discord.ext import commands
 import jthon
 import os
 import discord.abc
+
 class MyHelpCommand(commands.MinimalHelpCommand):
     async def send_pages(self):
         destination = self.get_destination()
@@ -15,7 +16,7 @@ class MyHelpCommand(commands.MinimalHelpCommand):
 # Variable Defs
 help_command = commands.DefaultHelpCommand(no_category = 'Other Commands')
 config = jthon.load('config')
-token = str(config.get("token")) #pulls the bot token from the hidden config file
+token = str(config.get("token")) #pulls the bot token from the config file
 bot = commands.Bot(
     command_prefix = commands.when_mentioned_or('!!!'),
     description = "The Official bot of the Unofficial MSCHF Discord Server",
